@@ -31,3 +31,4 @@ ros2 run husky_bringup install
     - git clone
 - images
 - filter modification
+- add Avaj gui
