@@ -4,5 +4,5 @@ import os
 import robot_upstart
 
 j = robot_upstart.Job(name="ros", workspace_setup=os.environ.get('ROBOT_SETUP'))
-j.add(package="husky_base", filename="launch/base.launch.py")
+j.add(package="husky_base", filename="launch/put_base.launch.py")
 j.install()
