@@ -7,6 +7,7 @@ Prepare your robot aaccording to the instructions in the Clearpath tutorial [her
 
 # ESA Cognition ROS2 packages
 
+Build 
 ```sh
 mkdir -p ~/put_husky_ws/src
 cd ~/put_husky_ws/src
@@ -15,7 +16,7 @@ cd ..
 rosdep install --from-paths src --ignore-src --rosdistro=$ROS_DISTRO -y
 colcon build --symlink-install
 source install/setup.bash
-echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
 echo "source ~/put_husky_ws/install/setup.bash" >> ~/.bashrc
 ros2 run husky_bringup install
 ```
