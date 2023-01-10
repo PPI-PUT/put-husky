@@ -3,6 +3,7 @@ from launch.substitutions import EnvironmentVariable, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 
+#TODO: look here for xsens
 
 def generate_launch_description():
     lc = LaunchContext()
