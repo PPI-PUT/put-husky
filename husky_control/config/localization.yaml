@@ -20,10 +20,10 @@ ekf_node:
 
     imu0: imu/data
     imu0_config: [false, false, false,
-                  true, true, true,
+                  false, false, true,
                   false, false, false,
-                  true, true, true,
-                  false, false, false]
+                  false, false, true,
+                  true, false, false]
     imu0_differential: true
     imu0_queue_size: 10
     imu0_remove_gravitational_acceleration: true

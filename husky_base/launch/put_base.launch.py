@@ -4,6 +4,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+from launch.actions import TimerAction
 
 
 def generate_launch_description():
@@ -20,6 +21,9 @@ def generate_launch_description():
             " ",
             "prefix:=''",
             " ",
+            "is_sim:=false",
+            " ",
+            "is_space_mate:=true",
         ]
     )
     robot_description = {"robot_description": robot_description_content}
@@ -84,14 +88,22 @@ def generate_launch_description():
         [FindPackageShare("husky_bringup"), 'launch', 'accessories.launch.py'])))
 
 
+    # Delay startup for motors to initialize
+    ta = TimerAction(
+        period=5.0,
+        actions=[node_controller_manager,spawn_controller,spawn_husky_velocity_controller,launch_husky_control,launch_husky_teleop_base]
+    )
+
+
     ld = LaunchDescription()
+    
     ld.add_action(node_robot_state_publisher)
-    ld.add_action(node_controller_manager)
-    ld.add_action(spawn_controller)
-    ld.add_action(spawn_husky_velocity_controller)
-    ld.add_action(launch_husky_control)
-    ld.add_action(launch_husky_teleop_base)
+    ld.add_action(ta)
+    #ld.add_action(node_controller_manager)
+    #ld.add_action(spawn_controller)
+    #ld.add_action(spawn_husky_velocity_controller)
+    #ld.add_action(launch_husky_control)
+    #ld.add_action(launch_husky_teleop_base)
     ld.add_action(launch_husky_teleop_joy)
-    # ld.add_action(launch_husky_accessories)
 
     return ld
