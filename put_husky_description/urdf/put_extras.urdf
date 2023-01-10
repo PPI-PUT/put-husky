@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- This file is a placeholder which is included by default from
+       husky.urdf.xacro. If a robot is being customized and requires
+       additional URDF, set the HUSKY_URDF_EXTRAS environment variable
+       to the full path of the file you would like included. -->
+
+  <!--<xacro:arg name="prefix" default="" />-->
+  <xacro:arg name="xsens_enabled" default="true" />
+
+  <!-- IMU Link-->
+  <!-- Can be modified with environment variables in /etc/ros/setup.bash -->
+  <xacro:if value="$(arg xsens_enabled)">
+    <link name="${prefix}xsens_link" />
+    <joint name="${prefix}xsens_joint" type="fixed">
+      <origin xyz="$(optenv HUSKY_XSENS_XYZ -0.225 0.0 0.005)" rpy="$(optenv HUSKY_XSENS_RPY 0.0 0.0 0.0)" />
+      <parent link="${prefix}top_plate_front_link" />
+      <child link="${prefix}xsens_link" />
+    </joint>
+  </xacro:if>
+
+  <link name="${prefix}dumb_link" />
+    <joint name="${prefix}dumb_joint" type="fixed">
+      <origin xyz="-0.225 0.0 0.005" rpy="0.0 0.0 0.0" />
+      <parent link="${prefix}top_plate_front_link" />
+      <child link="${prefix}dumb_link" />
+    </joint>
+
+  <!-- GPS Link-->
+  <!-- Can be modified with environment variables in /etc/ros/setup.bash -->
+  <!-- <link name="${prefix}gps_link" />
+  <joint name="${prefix}gps_joint" type="fixed">
+    <origin xyz="$(optenv CPR_GPS_XYZ 0 0 0)" rpy="$(optenv CPR_GPS_RPY 0 0 0)" />
+    <parent link="${prefix}base_link" />
+    <child link="${prefix}gps_link" />
+  </joint> -->
+
+</robot>
