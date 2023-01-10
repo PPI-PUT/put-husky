@@ -24,9 +24,9 @@ def generate_launch_description():
         )
     ld.add_action(node_ekf)
 
-    primary_imu_enable = EnvironmentVariable('CPR_IMU', default_value='false')
+    #primary_imu_enable = EnvironmentVariable('CPR_IMU', default_value='false')
 
-    if (primary_imu_enable.perform(lc)) == 'true':
+    if True:
         config_imu_filter = PathJoinSubstitution(
             [FindPackageShare('husky_control'),
             'config',
