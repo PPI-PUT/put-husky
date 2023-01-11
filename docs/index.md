@@ -8,7 +8,7 @@
 
 All sensors connected to the robot should be correctly identified at the startup to avoid serial port conflicts.
 
-[SENSORS]("SENSORS.md")
+[SENSORS](SENSORS.md)
 
 
 # Setup software
