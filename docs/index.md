@@ -64,7 +64,7 @@ We use Xsens MTi-300 IMU for measurements.
 ```sh
 mkdir -p ~/xsens_ws/src
 cd ~/xsens_ws/src
-git clone https://github.com/PPI-PUT/bluespace_ai_xsens_ros_mti_driver.git
+git clone -b foxy-husky https://github.com/PPI-PUT/bluespace_ai_xsens_ros_mti_driver.git
 cd ..
 rosdep install --from-paths src --ignore-src --rosdistro=$ROS_DISTRO -y
 colcon build --symlink-install
