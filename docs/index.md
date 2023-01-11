@@ -1,5 +1,3 @@
-# PUT HUSKY 
-
 # Setup robot
 
 ![robot](./imgs/robot.jpg)
