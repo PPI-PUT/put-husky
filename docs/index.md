@@ -2,6 +2,8 @@
 
 # Setup robot
 
+![robot](./imgs/robot.jpg)
+
 ## Install ROS
 
 Prepare your robot according to the instructions in the Clearpath tutorial [here](https://clearpathrobotics.com/assets/guides/foxy/husky/index.html). You should have Ubuntu 20.04 and ROS2 Foxy installed before following the tutorial.
@@ -54,6 +56,8 @@ sudo udevadm control --reload-rules && sudo service udev restart && sudo udevadm
 ## IMU integration
 
 We use Xsens MTi-300 IMU for measurements.
+
+![imu](./imgs/imu.jpg)
 
 ### Build workspace
 
