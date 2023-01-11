@@ -41,19 +41,56 @@ echo "source /opt/ros/foxy/setup.bash" >> ~/.bashrc
 echo "source ~/put_husky_ws/install/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 ```
-### Startup install
+
+### Setup udev rules
+```sh
+source ~/.bashrc
+sudo cp $(rospack find husky_bringup)/udev/* /etc/udev/rules.d/
+sudo cp $(rospack find husky_bringup)/debian/* /etc/udev/rules.d/
+
+sudo udevadm control --reload-rules && sudo service udev restart && sudo udevadm trigger
+```
+
+## IMU integration
+
+We use Xsens MTi-300 IMU for measurements.
+
+### Build workspace
+
+```sh
+mkdir -p ~/xsens_ws/src
+cd ~/xsens_ws/src
+git clone https://github.com/PPI-PUT/bluespace_ai_xsens_ros_mti_driver.git
+cd ..
+rosdep install --from-paths src --ignore-src --rosdistro=$ROS_DISTRO -y
+colcon build --symlink-install
+source install/setup.bash
+echo "source ~/xsens_ws/install/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+```
+
+### Setup udev rules
+```sh
+source ~/.bashrc
+sudo cp $(rospack find bluespace_ai_xsens_ros_mti_driver)/udev/* /etc/udev/rules.d/
+sudo udevadm control --reload-rules && sudo service udev restart && sudo udevadm trigger
+```
+
+## Startup install
 Run below script only on robot to enable ROS packages at the robot startup.
 ```sh
+source ~/.bashrc
 ros2 run husky_bringup install
+ros2 run bluespace_ai_xsens_ros_mti_driver install
 ```
 To verify installation you can run
 ```sh
 journalctl -a -b | grep ros
 ```
-to make sure no errors occured during startup. You can compare you out put with ours at [example_output.md](example_output.md). Don't worry if you would not get information about Xsens IMU, which is installed at section [IMU integration](#imu-integration).
-
+to make sure no errors occured during startup. You can compare you out put with ours at [example_output.md](example_output.md).
 
 ## Visualization
+_TODO_
 
-## IMU integration
+
 
