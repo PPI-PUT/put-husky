@@ -10,7 +10,7 @@ Prepare your robot according to the instructions in the Clearpath tutorial [here
 
 ### Basic network structure
  
-_TODO_ input image
+![network](./imgs/network_setup.jpg)
 
 Make sure that the onboard router has access to the internet during the setup.
 
