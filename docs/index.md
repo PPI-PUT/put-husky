@@ -80,9 +80,14 @@ sudo udevadm control --reload-rules && sudo service udev restart && sudo udevadm
 
 ## Startup install
 Run below script only on robot to enable ROS packages at the robot startup.
+
+Install Husky
 ```sh
 source ~/.bashrc
 ros2 run husky_bringup install
+```
+Install IMU 
+```
 ros2 run bluespace_ai_xsens_ros_mti_driver install
 ```
 To verify installation you can run
